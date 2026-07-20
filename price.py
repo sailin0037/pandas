@@ -8,18 +8,17 @@ data = {
 }
 df = pd.DataFrame(data)
 
-
-df
-
 #Cal Revenue
 df['Revenue'] = df['Price'] * df['Bottles Sold']
-
-
-df
 
 #  Highest Revenue & Optimal Price
 max_rev = df['Revenue'].max()
 opt_price = df.loc[df['Revenue'].idxmax(), 'Price']
+
+print("Price and sales preview:")
+print(df)
+print(f"\nHighest Revenue: ₹{max_rev}")
+print(f"Optimal Price: ₹{opt_price}")
 
 #Bar Chart: Price vs Revenue
 plt.figure(figsize=(8, 5))
@@ -29,4 +28,5 @@ plt.ylabel('Revenue (₹)')
 plt.title('Price vs Revenue Analysis')
 plt.xticks(df['Price'])
 plt.tight_layout()
-plt.show()
+plt.savefig("price_revenue_analysis.png")
+print("\nSaved chart preview to: price_revenue_analysis.png")
